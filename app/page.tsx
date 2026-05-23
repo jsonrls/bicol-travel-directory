@@ -76,32 +76,32 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Editorial Header Section */}
-      <section className="relative overflow-hidden bg-card py-20 lg:py-28 border-b border-border/50">
+      <section className="relative overflow-hidden border-b border-border/50 bg-card py-14 sm:py-16 lg:py-28">
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#0A1D37_1px,transparent_1px)] [background-size:16px_16px]"></div>
-        <div className="mx-auto max-w-7xl px-6 text-center lg:px-8 relative">
-          <div className="inline-flex items-center gap-1.5 rounded-full bg-secondary/10 px-3.5 py-1 text-xs font-semibold text-secondary mb-6">
+        <div className="relative mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+          <div className="mb-5 inline-flex items-center gap-1.5 rounded-full bg-secondary/10 px-3 py-1 text-[11px] font-semibold text-secondary sm:mb-6 sm:px-3.5 sm:text-xs">
             <Sparkles className="h-3.5 w-3.5 fill-secondary" />
             <span>Discover the Bicol Region</span>
           </div>
-          <h1 className="font-serif text-5xl font-extrabold tracking-tight text-primary md:text-7xl lg:text-8xl max-w-5xl mx-auto leading-[1.05]">
+          <h1 className="mx-auto max-w-5xl font-serif text-[2.55rem] font-extrabold leading-[0.98] tracking-tight text-primary sm:text-5xl md:text-7xl lg:text-8xl">
             Uncover the Peninsula's <br />
             <span className="font-light italic text-accent">Best-Kept Secrets</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-base md:text-lg leading-relaxed text-muted-foreground">
+          <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground sm:mt-6 sm:max-w-2xl sm:text-base md:text-lg">
             Explore a curated selection of luxury resorts, powder-white sand beaches, cozy eco-staycations, modern boutique hotels, and memorable food stops across southern Luzon.
           </p>
         </div>
       </section>
 
       {/* Filter and Search Section */}
-      <section className="relative -mt-10 z-20 mx-auto w-full max-w-7xl px-6">
-        <Suspense fallback={<div className="h-28 w-full bg-card rounded-3xl animate-pulse" />}>
+      <section className="relative z-20 mx-auto -mt-7 w-full max-w-7xl px-4 sm:-mt-9 sm:px-6">
+        <Suspense fallback={<div className="h-28 w-full animate-pulse rounded-3xl bg-card" />}>
           <FilterBar />
         </Suspense>
       </section>
 
       {/* Main Content Area */}
-      <div className="mx-auto w-full max-w-7xl px-6 py-16 lg:px-8">
+      <div className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
         {hasFilters ? (
           /* Search Results Grid */
           <section className="space-y-8">
