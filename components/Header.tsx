@@ -18,7 +18,7 @@ export default function Header() {
             alt="BicolStay logo"
             width={88}
             height={88}
-            className="h-16 w-16 rounded-full object-cover bg-transparent"
+            className="h-16 w-16 object-cover bg-transparent"
             priority
           />
         </Link>

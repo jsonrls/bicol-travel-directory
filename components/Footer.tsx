@@ -15,7 +15,7 @@ export default function Footer() {
                 alt="BicolStay logo"
                 width={88}
                 height={88}
-                className="h-32 w-32 rounded-full object-cover bg-transparent"
+                className="h-32 w-32 object-cover bg-transparent"
               />
             </Link>
             <p className="text-sm leading-relaxed text-muted-foreground max-w-sm">
