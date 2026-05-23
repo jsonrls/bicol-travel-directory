@@ -1,36 +1,110 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BicolStay
+
+BicolStay is a Next.js directory and editorial travel site for the Bicol Region in the Philippines. It combines curated destination pages, province and category browsing, and a Google Maps powered listing dataset for resorts, beaches, staycations, hotels, and food spots.
+
+## Features
+
+- Browse listings by category, province, and slug-based detail pages
+- Filter listings by search term, province, category, price range, vibe, and amenities
+- Explore province landing pages and editorial travel guides
+- Load listing data from a local Google Maps export
+- Scrape or refresh the Google Maps dataset with Playwright
+
+## Stack
+
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- Playwright for data scraping
+
+## Project Structure
+
+```text
+app/                  Next.js app routes and pages
+components/           Shared UI components
+lib/                  Data loading, types, and utilities
+data/google-maps/     Local dataset files
+scripts/              Data collection and maintenance scripts
+public/               Static assets
+```
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 20 or newer
+- npm
+
+### Install
+
+```bash
+npm install
+```
+
+### Run the app
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run dev
+npm run build
+npm run start
+npm run lint
+npm run scrape:google-maps
+```
 
-## Learn More
+## Data
 
-To learn more about Next.js, take a look at the following resources:
+The app reads listing data from:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `data/google-maps/bicol-google-maps-all.csv`
+- `data/google-maps/bicol-google-maps-all.json`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The Google Maps import pipeline is implemented in `scripts/scrape-google-maps.mjs` and transformed for the app through `lib/data/googleMapsListings.ts`.
 
-## Deploy on Vercel
+### Refresh the dataset
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run scrape:google-maps
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Optional environment filters:
+
+```bash
+GMAP_CATEGORY=resorts,hotels
+GMAP_PROVINCE=Albay,Sorsogon
+GMAP_TERM=hotel,resort
+GMAP_MAX_PLACES=100
+npm run scrape:google-maps
+```
+
+## Git and Local Files
+
+This repo is set up to keep generated and machine-specific files out of version control, including:
+
+- `node_modules/`
+- `.next/`
+- `.DS_Store`
+- editor metadata like `.vscode/` and `.idea/`
+- local scraper checkpoint files such as `data/google-maps/*-progress.json`
+
+If you need environment variables later, prefer committing an `.env.example` file and keeping real `.env` files local only.
+
+## Build for Production
+
+```bash
+npm run build
+npm run start
+```
+
+## Notes
+
+- Listing content is partially derived from Google Maps data and may need manual editorial review before publication.
+- The scraper writes resumable progress locally, but that checkpoint file is intentionally ignored for Git cleanliness.
